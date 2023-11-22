@@ -63,5 +63,5 @@ return {
     vim.fn['fzf#install']()
   end
   },
+  { 'mhartington/formatter.nvim' },
 }
-
