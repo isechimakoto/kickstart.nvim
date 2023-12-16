@@ -64,4 +64,12 @@ return {
   end
   },
   { 'mhartington/formatter.nvim' },
+  { 'vim-denops/denops.vim' },
+  {
+    "shuntaka9576/preview-asciidoc.vim",
+    dependencies = {
+      "vim-denops/denops.vim",
+    }
+  },
+  { 'keaising/im-select.nvim' },
 }
