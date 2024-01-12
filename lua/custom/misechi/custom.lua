@@ -15,6 +15,7 @@ function QuickFixToggle()
 end
 
 vim.keymap.set("n", "<C-q>", "<cmd>lua QuickFixToggle()<cr>")
+vim.keymap.set("n", "<leader>Q", "<cmd>call setqflist([], 'f')<cr>")
 
 function Colors(color)
   color = color or "rose-pine"
