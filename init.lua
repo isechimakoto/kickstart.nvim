@@ -339,6 +339,9 @@ local actions = require('telescope.actions')
 require('telescope').setup {
   defaults = {
     layout_strategy = 'vertical',
+    layout_config = {
+      preview_cutoff = 5,
+    },
     path_display = 'truncate',
     mappings = {
       i = {
