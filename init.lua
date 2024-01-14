@@ -239,6 +239,7 @@ require('lazy').setup({
     },
   },
 
+  { 'JoosepAlviste/nvim-ts-context-commentstring', },
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
@@ -449,11 +450,6 @@ vim.defer_fn(function()
       "yaml",
     },
 
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
-    },
-
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
 
@@ -466,10 +462,10 @@ vim.defer_fn(function()
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = '<c-space>',
-        node_incremental = '<c-space>',
+        init_selection = '<c-k>',
+        node_incremental = '<c-k>',
+        node_decremental = '<c-j>',
         scope_incremental = '<c-s>',
-        node_decremental = '<M-space>',
       },
     },
     textobjects = {
