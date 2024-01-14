@@ -462,10 +462,9 @@ vim.defer_fn(function()
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = '<c-k>',
-        node_incremental = '<c-k>',
-        node_decremental = '<c-j>',
-        scope_incremental = '<c-s>',
+        init_selection = '<c-w>',
+        node_incremental = '<c-w>',
+        node_decremental = '<c-s>',
       },
     },
     textobjects = {
