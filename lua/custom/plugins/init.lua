@@ -71,5 +71,4 @@ return {
       "vim-denops/denops.vim",
     }
   },
-  { 'keaising/im-select.nvim' },
 }
