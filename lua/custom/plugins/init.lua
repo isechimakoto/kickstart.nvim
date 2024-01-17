@@ -13,7 +13,11 @@ return {
   { 'nvim-treesitter/playground' },
   { 'nvim-treesitter/nvim-treesitter-context' },
   { 'nvim-telescope/telescope-file-browser.nvim' },
-  { 'theprimeagen/harpoon' },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
   { 'mbbill/undotree' },
   {
     'akinsho/toggleterm.nvim',
