@@ -1,6 +1,10 @@
 local harpoon = require("harpoon")
 
-harpoon:setup()
+harpoon:setup({
+    settings = {
+        save_on_toggle = true,
+    }
+})
 
 -- basic telescope configuration
 local conf = require("telescope.config").values
@@ -20,7 +24,8 @@ local function toggle_telescope(harpoon_files)
     }):find()
 end
 
-vim.keymap.set("n", "<leader>t", function() toggle_telescope(harpoon:list()) end,
+vim.keymap.set("n", "<leader>t", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+vim.keymap.set("n", "<leader>r", function() toggle_telescope(harpoon:list()) end,
     { desc = "Open harpoon window" })
 
 vim.keymap.set("n", "<leader>a", function () harpoon:list():append() end)
