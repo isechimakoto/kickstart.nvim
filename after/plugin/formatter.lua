@@ -1,5 +1,6 @@
 -- Utilities for creating configurations
 local util = require "formatter.util"
+local prettier = require "formatter.defaults.prettier"
 
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
 require("formatter").setup {
@@ -7,6 +8,7 @@ require("formatter").setup {
   logging = true,
   -- Set the log level
   log_level = vim.log.levels.WARN,
+  try_node_modules = true,
   -- All formatter configurations are opt-in
   filetype = {
     -- Formatter configurations for filetype "lua" go here
@@ -39,15 +41,35 @@ require("formatter").setup {
       end
     },
 
+    rust = {
+      require "formatter.filetypes.rust".rustfmt,
+    },
+
+    javascript = {
+      require "formatter.filetypes.javascript".prettier,
+    },
+
+    javascriptreact = {
+      require "formatter.filetypes.javascriptreact".prettier,
+    },
+
+    typescript = {
+      require "formatter.filetypes.typescript".prettier,
+    },
+
+    typescriptreact = {
+      require "formatter.filetypes.typescriptreact".prettier,
+    },
+
     -- Use the special "*" filetype for defining formatter configurations on
     -- any filetype
     ["*"] = {
       -- "formatter.filetypes.any" defines default configurations for any
       -- filetype
       require("formatter.filetypes.any").remove_trailing_whitespace,
-      require("formatter.defaults.prettier")
     }
   }
 }
 
-vim.keymap.set('n', '<leader>lf', '<cmd>FormatWrite<cr>')
+vim.keymap.set('n', '<leader>lf', '<cmd>Format<cr>')
+vim.keymap.set('n', '<leader>lF', '<cmd>FormatWrite<cr>')
