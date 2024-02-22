@@ -22,7 +22,7 @@ return {
   {
     'akinsho/toggleterm.nvim',
     version = '*',
-    config = function ()
+    config = function()
       require('toggleterm').setup({
         open_mapping = [[<c-\>]],
         direction = 'float',
@@ -41,7 +41,7 @@ return {
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = { }
+    opts = {}
   },
   {
     'ruifm/gitlinker.nvim',
@@ -62,8 +62,8 @@ return {
       )
     end,
   },
-  {'kevinhwang91/nvim-bqf', ft = 'qf'},
-  {'junegunn/fzf', run = function()
+  { 'kevinhwang91/nvim-bqf', ft = 'qf' },
+  { 'junegunn/fzf', run = function()
     vim.fn['fzf#install']()
   end
   },
@@ -80,5 +80,41 @@ return {
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
+  },
+  {
+    "johmsalas/text-case.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    config = function()
+      require("textcase").setup({})
+      require("telescope").load_extension("textcase")
+    end,
+    keys = {
+      "<leader>c",
+      { "<leader>c.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "x" }, desc = "Telescope" },
+      { "<leader>cc", "<cmd>lua require('textcase').current_word('to_camel_case')<CR>", mode = { "n", "x" },
+        desc = "to_camel_case" },
+      { "<leader>cs", "<cmd>lua require('textcase').current_word('to_snake_case')<CR>", mode = { "n", "x" },
+        desc = "to_snake_case" },
+      { "<leader>c-", "<cmd>lua require('textcase').current_word('to_dash_case')<CR>", mode = { "n", "x" },
+        desc = "to_dash_case" },
+      { "<leader>cT", "<cmd>lua require('textcase').current_word('to_title_dash_case')<CR>", mode = { "n", "x" },
+        desc = "to_title_dash_case" },
+      { "<leader>cC", "<cmd>lua require('textcase').current_word('to_constant_case')<CR>", mode = { "n", "x" },
+        desc = "to_constant_case" },
+      { "<leader>cd", "<cmd>lua require('textcase').current_word('to_dot_case')<CR>", mode = { "n", "x" },
+        desc = "to_dot_case" },
+      { "<leader>cw", "<cmd>lua require('textcase').current_word('to_phrase_case')<CR>", mode = { "n", "x" },
+        desc = "to_phrase_case" },
+      { "<leader>cp", "<cmd>lua require('textcase').current_word('to_pascal_case')<CR>", mode = { "n", "x" },
+        desc = "to_pascal_case" },
+      { "<leader>ct", "<cmd>lua require('textcase').current_word('to_title_case')<CR>", mode = { "n", "x" },
+        desc = "to_title_case" },
+      { "<leader>c/", "<cmd>lua require('textcase').current_word('to_path_case')<CR>", mode = { "n", "x" },
+        desc = "to_path_case" },
+      { "<leader>cu", "<cmd>lua require('textcase').current_word('to_upper_phrase_case')<CR>", mode = { "n", "x" },
+        desc = "to_upper_phrase_case" },
+      { "<leader>cl", "<cmd>lua require('textcase').current_word('to_lower_phrase_case')<CR>", mode = { "n", "x" },
+        desc = "to_lower_phrase_case" },
+    },
   },
 }
