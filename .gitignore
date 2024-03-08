@@ -3,3 +3,6 @@ test.sh
 .luarc.json
 nvim
 secret_*.lua
+
+spell/
+lazy-lock.json
