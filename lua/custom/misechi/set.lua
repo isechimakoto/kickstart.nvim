@@ -19,6 +19,7 @@ vim.opt.list = true
 vim.opt.listchars = "tab:» ,trail:-"
 vim.g.denops_server_addr = '127.0.0.1:12345'
 vim.g.netrw_banner = 0
+vim.o.mouse = ''
 
 local has = vim.fn.has
 local is_mac = has "mac"

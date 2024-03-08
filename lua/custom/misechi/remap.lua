@@ -31,3 +31,4 @@ vim.keymap.set("n", "<M-J>", "<C-w>-")
 vim.keymap.set("n", "<M-K>", "<C-w>+")
 vim.keymap.set("n", "<M-L>", "<C-w>>")
 
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })

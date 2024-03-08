@@ -70,7 +70,7 @@ require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
   -- Git related plugins
-  -- 'tpope/vim-fugitive',
+  'tpope/vim-fugitive',
   -- 'tpope/vim-rhubarb',
 
   -- Detect tabstop and shiftwidth automatically
@@ -113,67 +113,6 @@ require('lazy').setup({
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
-  {
-    -- Adds git related signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      -- See `:help gitsigns.txt`
-      -- signs = {
-      --   add = { text = '+' },
-      --   change = { text = '~' },
-      --   delete = { text = '_' },
-      --   topdelete = { text = '‾' },
-      --   changedelete = { text = '~' },
-      -- },
-      on_attach = function(bufnr)
-        -- vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
-
-        -- don't override the built-in and fugitive keymaps
-        -- local gs = package.loaded.gitsigns
-        -- vim.keymap.set({ 'n', 'v' }, ']c', function()
-        --   if vim.wo.diff then
-        --     return ']c'
-        --   end
-        --   vim.schedule(function()
-        --     gs.next_hunk()
-        --   end)
-        --   return '<Ignore>'
-        -- end, { expr = true, buffer = bufnr, desc = 'Jump to next hunk' })
-        -- vim.keymap.set({ 'n', 'v' }, '[c', function()
-        --   if vim.wo.diff then
-        --     return '[c'
-        --   end
-        --   vim.schedule(function()
-        --     gs.prev_hunk()
-        --   end)
-        --   return '<Ignore>'
-        -- end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
-
-        local gs = package.loaded.gitsigns
-        local function map(mode, l, r, opts)
-          opts = opts or {}
-          opts.buffer = bufnr
-          vim.keymap.set(mode, l, r, opts)
-        end
-
-        map('n', '<leader>gk', function()
-          gs.prev_hunk { navigation_message = false }
-        end)
-        map('n', '<leader>gj', function()
-          gs.next_hunk { navigation_message = false }
-        end)
-        map('n', '<leader>gl', function()
-          gs.blame_line { full = true }
-        end)
-        map('n', '<leader>gp', gs.preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
-        map('n', '<leader>gr', gs.reset_hunk)
-        map('n', '<leader>gR', gs.reset_buffer)
-        map('n', '<leader>gs', gs.stage_hunk)
-        map('n', '<leader>gu', gs.undo_stage_hunk)
-        map('n', '<leader>gd', gs.diffthis)
-      end,
-    },
-  },
 
   {
     -- Theme inspired by Atom
@@ -207,17 +146,6 @@ require('lazy').setup({
   --   opts = {},
   -- },
 
-  -- "gc" to comment visual regions/lines
-  {
-    'numToStr/Comment.nvim',
-    opts = {},
-    config = function()
-      require('Comment').setup({
-        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-      })
-    end,
-  },
-
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
@@ -239,7 +167,6 @@ require('lazy').setup({
     },
   },
 
-  { 'JoosepAlviste/nvim-ts-context-commentstring', },
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
@@ -411,10 +338,6 @@ end, { desc = '[/] Fuzzily search in current buffer' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sW', function()
-  local word = vim.fn.expand('<cWORD>')
-  require('telescope.builtin').grep_string({ search = word })
-end, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
