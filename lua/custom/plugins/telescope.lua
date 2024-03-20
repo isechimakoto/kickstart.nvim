@@ -72,12 +72,8 @@ return {
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader><leader>', function()
-        builtin.buffers { show_all_buffers = false, only_cwd = true, sort_lastused = true }
-      end, { desc = '[ ] Find existing buffers' })
-      -- vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = 'Find existing [B]uffers [F]iles' })
-      vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Search [G]it [F]iles' })
-      -- vim.keymap.set('n', '<leader>gf', builtin.git_status, { desc = 'Search [G]it [F]iles' })
+      vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = 'Find existing [B]uffers [F]iles' })
+      vim.keymap.set('n', '<leader>gf', builtin.git_status, { desc = 'Search [G]it [F]iles' })
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>/', function()
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {

@@ -26,3 +26,15 @@ function Colors(color)
   vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 end
 
+function Dump(o)
+   if type(o) == 'table' then
+      local s = '{ '
+      for k,v in pairs(o) do
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+         s = s .. '['..k..'] = ' .. Dump(v) .. ','
+      end
+      return s .. '} '
+   else
+      return tostring(o)
+   end
+end
