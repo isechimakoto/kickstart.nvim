@@ -571,6 +571,13 @@ require('lazy').setup({
             },
           },
         },
+        tailwindCSS = {
+          settings = {
+            experimental = {
+              classRegex = { "[a-zA-Z]*ClassName='([^']+)'" },
+            },
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed

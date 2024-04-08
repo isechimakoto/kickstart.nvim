@@ -16,7 +16,15 @@ return {
           end
           map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
           map('gr', function()
-            require('telescope.builtin').lsp_references { show_line = false }
+            require('telescope.builtin').lsp_references {
+              show_line = false,
+              path_display = {
+                shorten = {
+                  len = 3,
+                  exclude = { 1, 2, 3, -1 },
+                },
+              },
+            }
           end, '[G]oto [R]eferences')
           map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
           map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
@@ -78,6 +86,11 @@ return {
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
             },
+          },
+        },
+        graphql = {
+          settings = {
+            cacheSchemaFileForLookup = true
           },
         },
       }
