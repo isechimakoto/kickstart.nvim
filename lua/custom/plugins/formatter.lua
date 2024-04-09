@@ -10,6 +10,8 @@ return {
         },
         formatters_by_ft = {
           lua = { 'stylua' },
+          css = { { 'prettierd', 'prettier' } },
+          scss = { { 'prettierd', 'prettier' } },
           javascript = { { 'prettierd', 'prettier' } },
           typescript = { { 'prettierd', 'prettier' } },
           javascriptreact = { { 'prettierd', 'prettier' } },
