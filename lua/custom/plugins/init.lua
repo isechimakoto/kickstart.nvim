@@ -2,10 +2,24 @@ return {
   {
     'rose-pine/neovim',
     name = 'rose-pine',
-    config = function()
-      vim.cmd 'colorscheme rose-pine'
-    end,
+    -- config = function()
+    -- vim.cmd 'colorscheme rose-pine'
+    -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+    -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+    -- vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'none' })
+    -- require('rose-pine').setup {
+    --   highlight_groups = {
+    --     TelescopeBorder = { fg = 'highlight_high', bg = 'none' },
+    --     TelescopeNormal = { bg = 'none' },
+    --     TelescopePromptNormal = { bg = 'none' },
+    --     TelescopeResultsNormal = { fg = 'subtle', bg = 'none' },
+    --     TelescopeSelection = { fg = 'text', bg = 'none' },
+    --     TelescopeSelectionCaret = { fg = 'rose', bg = 'rose' },
+    --   },
+    -- }
+    -- end,
   },
+  { 'rebelot/kanagawa.nvim' },
   {
     'mbbill/undotree',
     keys = {
