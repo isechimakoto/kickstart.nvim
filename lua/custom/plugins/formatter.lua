@@ -5,10 +5,10 @@ return {
       local conform = require 'conform'
       local util = require 'conform.util'
       conform.setup {
-        format_on_save = {
-          timeout_ms = 500,
-          lsp_fallback = true,
-        },
+        -- format_on_save = {
+        --   timeout_ms = 500,
+        --   lsp_fallback = true,
+        -- },
         formatters_by_ft = {
           lua = { 'stylua' },
           css = { { 'prettierd', 'prettier' } },

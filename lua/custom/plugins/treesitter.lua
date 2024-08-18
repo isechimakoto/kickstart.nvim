@@ -30,14 +30,14 @@ return {
         auto_install = true,
         highlight = { enable = true },
         indent = { enable = true },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = '<c-w>',
-            node_incremental = '<c-w>',
-            node_decremental = '<c-s>',
-          },
-        },
+        -- incremental_selection = {
+        --   enable = true,
+        --   keymaps = {
+        --     init_selection = '<c-w>',
+        --     node_incremental = '<c-w>',
+        --     node_decremental = '<c-s>',
+        --   },
+        -- },
         textobjects = {
           select = {
             enable = true,
