@@ -23,8 +23,11 @@ return {
         defaults = {
           layout_strategy = 'vertical',
           layout_config = {
+            mirror = true,
+            prompt_position = 'top',
             preview_cutoff = 5,
           },
+          sorting_strategy = 'ascending',
           path_display = {
             shorten = {
               len = 5,
@@ -33,15 +36,13 @@ return {
           },
           mappings = {
             i = {
-              ['<C-j>'] = actions.move_selection_next,
-              ['<C-k>'] = actions.move_selection_previous,
-              ['<C-n>'] = actions.cycle_history_next,
-              ['<C-p>'] = actions.cycle_history_prev,
+              ['<C-j>'] = actions.cycle_history_next,
+              ['<C-k>'] = actions.cycle_history_prev,
+              ['<C-n>'] = actions.move_selection_next,
+              ['<C-p>'] = actions.move_selection_previous,
             },
             n = {
               ['q'] = actions.close,
-              ['<C-j>'] = actions.move_selection_next,
-              ['<C-k>'] = actions.move_selection_previous,
             },
           },
         },
