@@ -91,11 +91,12 @@ return {
     --   vim.fn['fzf#install']()
     -- end,
   },
-  { 'vim-denops/denops.vim' },
   {
-    'shuntaka9576/preview-asciidoc.vim',
-    dependencies = {
-      'vim-denops/denops.vim',
+    'tigion/nvim-asciidoc-preview',
+    ft = { 'asciidoc' },
+    build = 'cd server && npm install',
+    opts = {
+      -- Add user configuration here
     },
   },
   {
