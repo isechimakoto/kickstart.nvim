@@ -55,7 +55,6 @@ return {
 
       pcall(telescope.load_extension, 'projects')
       pcall(telescope.load_extension, 'harpoon')
-      pcall(telescope.load_extension, 'file_browser')
       pcall(telescope.load_extension, 'fzf')
       pcall(telescope.load_extension, 'ui-select')
 
@@ -105,21 +104,6 @@ return {
       vim.keymap.set('n', '<leader>P', function()
         vim.cmd 'Telescope projects'
       end)
-
-      vim.keymap.set('n', '<leader>e', function()
-        telescope.extensions.file_browser.file_browser {
-          path = '%:p:h',
-          cwd = vim.fn.expand '%:p:h',
-          cwd_to_path = true,
-          respect_gitignore = false,
-          hidden = true,
-          grouped = true,
-          previewer = false,
-          initial_mode = 'insert',
-          layout_config = { width = 80 },
-        }
-      end)
     end,
   },
-  { 'nvim-telescope/telescope-file-browser.nvim' },
 }
