@@ -19,7 +19,21 @@ return {
     -- }
     -- end,
   },
-  { 'rebelot/kanagawa.nvim' },
+  {
+    'rebelot/kanagawa.nvim',
+    opts = {
+      transparent = true, -- enable transparency
+      colors = {
+        theme = {
+          all = {
+            ui = {
+              bg_gutter = 'none', -- remove background for gutter
+            },
+          },
+        },
+      },
+    },
+  },
   {
     'mbbill/undotree',
     keys = {
