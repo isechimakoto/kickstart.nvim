@@ -61,6 +61,16 @@ return {
       local servers = {
         -- rust_analyzer = {},
         -- tsserver = {},
+        -- basedpyright = {
+        --   root_dir = function(fname)
+        --     return require('lspconfig.util').root_pattern(unpack { 'pyrightconfig.json', '.git' })(fname)
+        --   end,
+        -- },
+        pyright = {
+          root_dir = function(fname)
+            return require('lspconfig.util').root_pattern(unpack { 'pyrightconfig.json', '.git' })(fname)
+          end,
+        },
 
         lua_ls = {
           -- cmd = {...},
@@ -90,7 +100,7 @@ return {
         },
         graphql = {
           settings = {
-            cacheSchemaFileForLookup = true
+            cacheSchemaFileForLookup = true,
           },
         },
       }
@@ -170,6 +180,14 @@ return {
           { name = 'path' },
         },
       }
+
+      -- Setup up vim-dadbod
+      cmp.setup.filetype({ 'sql', 'mysql' }, {
+        sources = {
+          { name = 'vim-dadbod-completion' },
+          { name = 'buffer' },
+        },
+      })
     end,
   },
 }
