@@ -41,16 +41,34 @@ return {
           end, '[W]orkspace [L]ist Folders')
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client and client.server_capabilities.documentHighlightProvider then
+          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+            -- if client and client.server_capabilities.documentHighlightProvider then
+            local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = event.buf,
+              group = highlight_augroup,
               callback = vim.lsp.buf.document_highlight,
             })
 
             vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
               buffer = event.buf,
+              group = highlight_augroup,
               callback = vim.lsp.buf.clear_references,
             })
+
+            vim.api.nvim_create_autocmd('LspDetach', {
+              group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+              callback = function(event2)
+                vim.lsp.buf.clear_references()
+                vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+              end,
+            })
+          end
+
+          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+            map('<leader>th', function()
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+            end, '[T]oggle Inlay [H]ints')
           end
         end,
       })
@@ -61,6 +79,7 @@ return {
       local servers = {
         -- rust_analyzer = {},
         -- tsserver = {},
+        -- ts_ls = {},
         -- basedpyright = {
         --   root_dir = function(fname)
         --     return require('lspconfig.util').root_pattern(unpack { 'pyrightconfig.json', '.git' })(fname)
@@ -101,6 +120,13 @@ return {
         graphql = {
           settings = {
             cacheSchemaFileForLookup = true,
+          },
+        },
+        tailwindcss = {
+          settings = {
+            experimental = {
+              classRegex = { '.*ClassNames', "[a-zA-Z]*ClassName='([^']+)'" },
+            },
           },
         },
       }
