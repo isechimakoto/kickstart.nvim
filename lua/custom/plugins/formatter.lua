@@ -1,3 +1,32 @@
+---@param bufnr integer
+---@param ... string
+---@return string
+local function first(bufnr, ...)
+  local conform = require 'conform'
+  for i = 1, select('#', ...) do
+    local formatter = select(i, ...)
+    if conform.get_formatter_info(formatter, bufnr).available then
+      return formatter
+    end
+  end
+  return select(1, ...)
+end
+
+local function expandFormatters(formatters)
+  return function(bufnr)
+    local result = {}
+    for i = 1, #formatters do
+      local formatter = formatters[i]
+      if type(formatter) == 'table' then
+        result[i] = first(bufnr, unpack(formatter))
+      else
+        result[i] = formatter
+      end
+    end
+    return result
+  end
+end
+
 return {
   {
     'stevearc/conform.nvim',
@@ -23,17 +52,17 @@ return {
       --   }
       -- end,
       formatters_by_ft = {
-        lua = { 'stylua' },
-        -- You can use 'stop_after_first' to run the first available formatter from the list
-        css = { { 'prettierd', 'prettier', stop_after_first = true } },
-        scss = { { 'prettierd', 'prettier', stop_after_first = true } },
-        javascript = { { 'prettierd', 'prettier', stop_after_first = true } },
-        typescript = { { 'prettierd', 'prettier', stop_after_first = true } },
-        javascriptreact = { { 'prettierd', 'prettier', stop_after_first = true } },
-        typescriptreact = { { 'prettierd', 'prettier', stop_after_first = true } },
-        php = { 'pint', 'php_cs_fixer', stop_after_first = true },
-        graphql = { { 'prettierd', 'prettier', stop_after_first = true } },
-        json = { { 'prettierd', 'prettier', stop_after_first = true } },
+        lua = expandFormatters { 'stylua' },
+        css = expandFormatters { { 'prettierd', 'prettier' } },
+        scss = expandFormatters { { 'prettierd', 'prettier' } },
+        javascript = expandFormatters { { 'prettierd', 'prettier' } },
+        typescript = expandFormatters { { 'prettierd', 'prettier' } },
+        javascriptreact = expandFormatters { { 'prettierd', 'prettier' } },
+        typescriptreact = expandFormatters { { 'prettierd', 'prettier' } },
+        vue = expandFormatters { { 'prettierd', 'prettier' } },
+        php = expandFormatters { 'pint', 'php_cs_fixer' },
+        graphql = expandFormatters { { 'prettierd', 'prettier' } },
+        json = expandFormatters { { 'prettierd', 'prettier' } },
       },
     },
   },
