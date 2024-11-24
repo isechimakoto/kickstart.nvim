@@ -854,6 +854,12 @@ require('lazy').setup({
       }
       vim.keymap.set('n', '<leader>e', '<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0), false)<CR>')
       vim.keymap.set('n', '<leader>E', '<cmd>lua MiniFiles.open(MiniFiles.get_latest_path())<CR>')
+
+      require('mini.indentscope').setup {
+        symbol = '│',
+        options = { try_as_border = true },
+      }
+
     end,
   },
   { -- Highlight, edit, and navigate code
