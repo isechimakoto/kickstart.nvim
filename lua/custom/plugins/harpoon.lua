@@ -40,7 +40,7 @@ return {
       end, { desc = 'Open harpoon window' })
 
       vim.keymap.set('n', '<leader>a', function()
-        harpoon:list():append()
+        harpoon:list():add()
       end)
       vim.keymap.set('n', '<C-j>', function()
         harpoon:list():select(1)
