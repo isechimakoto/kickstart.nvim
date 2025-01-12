@@ -63,6 +63,7 @@ return {
         php = expandFormatters { 'pint', 'php_cs_fixer' },
         graphql = expandFormatters { { 'prettierd', 'prettier' } },
         json = expandFormatters { { 'prettierd', 'prettier' } },
+        python = expandFormatters { { 'black' } },
       },
     },
   },
