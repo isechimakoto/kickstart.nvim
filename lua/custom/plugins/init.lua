@@ -85,34 +85,18 @@ return {
     opts = {},
   },
 
-  {
-    'windwp/nvim-autopairs',
-    -- Optional dependency
-    dependencies = { 'hrsh7th/nvim-cmp' },
-    config = function()
-      require('nvim-autopairs').setup {}
-      -- If you want to automatically add `(` after selecting a function or method
-      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
-      local cmp = require 'cmp'
-      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
-    end,
-  },
-
   { 'kevinhwang91/nvim-bqf', ft = 'qf' },
-  {
-    'junegunn/fzf',
-    -- run = function()
-    --   vim.fn['fzf#install']()
-    -- end,
-  },
+
+  { 'junegunn/fzf' },
+
   {
     'tigion/nvim-asciidoc-preview',
     ft = { 'asciidoc' },
     build = 'cd server && npm install',
     opts = {
       server = {
-        converter = 'cmd'
-      }
+        converter = 'cmd',
+      },
     },
   },
   {
