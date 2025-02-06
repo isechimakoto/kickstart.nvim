@@ -20,6 +20,8 @@ vim.opt.listchars = "tab:» ,trail:-"
 vim.g.netrw_banner = 0
 vim.o.mouse = ''
 vim.opt.cursorline = false
+vim.opt.winblend = 0
+vim.opt.pumblend = 0
 
 local has = vim.fn.has
 local is_mac = has "mac"

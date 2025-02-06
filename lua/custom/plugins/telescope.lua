@@ -62,6 +62,7 @@ return {
       pcall(telescope.load_extension, 'fzf')
       pcall(telescope.load_extension, 'ui-select')
       pcall(telescope.load_extension, 'refactoring')
+      pcall(telescope.load_extension, 'noice')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
