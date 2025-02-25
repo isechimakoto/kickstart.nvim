@@ -56,7 +56,7 @@ return {
           -- LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
           -- MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
 
-          -- TelescopeTitle = { fg = theme.ui.special, bold = true },
+          TelescopeTitle = { fg = theme.ui.special, bold = true },
           -- TelescopePromptNormal = { bg = theme.ui.bg_p1 },
           -- TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
           -- TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
