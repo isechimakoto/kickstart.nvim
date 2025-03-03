@@ -875,6 +875,10 @@ require('lazy').setup({
           end
         end,
       })
+
+      require('mini.notify').setup {
+        lsp_progress = { enable = false },
+      }
     end,
   },
   { -- Highlight, edit, and navigate code
