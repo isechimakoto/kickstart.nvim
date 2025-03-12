@@ -844,16 +844,16 @@ require('lazy').setup({
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
 
-      require('mini.files').setup {
-        mappings = {
-          close = '<Esc>',
-        },
-        options = {
-          use_as_default_explorer = false,
-        },
-      }
-      vim.keymap.set('n', '<leader>e', '<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0), false)<CR>')
-      vim.keymap.set('n', '<leader>E', '<cmd>lua MiniFiles.open(MiniFiles.get_latest_path())<CR>')
+      -- require('mini.files').setup {
+      --   mappings = {
+      --     close = '<Esc>',
+      --   },
+      --   options = {
+      --     use_as_default_explorer = false,
+      --   },
+      -- }
+      -- vim.keymap.set('n', '<leader>e', '<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0), false)<CR>')
+      -- vim.keymap.set('n', '<leader>E', '<cmd>lua MiniFiles.open(MiniFiles.get_latest_path())<CR>')
 
       require('mini.indentscope').setup {
         symbol = '│',
@@ -876,9 +876,9 @@ require('lazy').setup({
         end,
       })
 
-      require('mini.notify').setup {
-        lsp_progress = { enable = false },
-      }
+      -- require('mini.notify').setup {
+      --   lsp_progress = { enable = false },
+      -- }
     end,
   },
   { -- Highlight, edit, and navigate code
