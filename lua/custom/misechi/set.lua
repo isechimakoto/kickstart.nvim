@@ -28,15 +28,12 @@ local is_mac = has 'mac'
 local is_win = has 'win32'
 local is_linux = has 'linux'
 
-if is_mac == 1 then
-  vim.opt.clipboard:append { 'unnamedplus' }
-end
-
-if is_win == 1 then
+if is_mac == 1 or is_win == 1 then
   vim.opt.clipboard:prepend { 'unnamed', 'unnamedplus' }
 end
 
 if is_linux == 1 then
+  vim.g.netrw_browsex_viewer = 'wslview'
   vim.g.clipboard = {
     name = 'xsel_override',
     copy = {
