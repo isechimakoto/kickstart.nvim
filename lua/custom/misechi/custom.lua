@@ -39,11 +39,11 @@ end
 
 function JqSelectedText()
   -- Get the start and end column positions
-  local start_col = vim.fn.col("'<")
-  local end_col = vim.fn.col("'>")
+  local start_col = vim.fn.col "'<"
+  local end_col = vim.fn.col "'>"
 
   -- Get the line under the cursor
-  local line = vim.fn.getline(".")
+  local line = vim.fn.getline '.'
 
   -- Get the selected word
   local selected_word = string.sub(line, start_col, end_col)
@@ -54,4 +54,3 @@ end
 
 -- Map the function to a key (for example, <leader>j) in visual mode
 vim.api.nvim_set_keymap('v', '<leader>z', '<cmd>lua JqSelectedText()<CR>', { noremap = true, silent = true })
-
